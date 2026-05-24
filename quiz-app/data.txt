@@ -1,0 +1,56 @@
+const quiz_app = [
+ {
+    'question': 'CPU full form ?',
+    'options': ['Central Process Unit', 'Central Processing Unit', 'Computer Processing Unit', 'Core Processing Unit'],
+    'correct': 1,
+},
+{
+    'question': 'Which data structure works on the principle of FIFO ?',
+    'options': ['Stack', 'Queue', 'Tree', 'Graph'],
+    'correct': 1,
+},
+{
+    'question': 'Which programming language is  primarily used for web page structure ?',
+    'options': ['Python', 'Java', 'HTML', 'C++'],
+    'correct': 2,
+},
+{
+    'question': 'What is the binary equivalent of decimal number 10 ?',
+    'options': ['1010', '1001', '1110', '1100'],
+    'correct': 0,
+},
+{
+    'question': 'Which algorithm is commonly used for searching in a sorted array ?',
+    'options': ['Bubble sort', 'Linear Search', 'Binary Search', 'Depth-First Search'],
+    'correct': 2,
+},
+
+
+]
+
+
+
+How does your app know which question to show currently ?
+-> I can make a variable current_question which will track the current index of the array quiz_app by which i will know where the user is. the default will be 0 as in first question.
+
+How do you move to the next question after an answer is selected ?
+-> I will add a next button on html which trigger an event through which i will increase the index of the current_question variable, by which i will know which question to show.
+
+How do you know when the quiz is finished?
+-> When the current_question variable reaches the array length minus one it will be last question, when that happens i will write a code to make the next button on the html to change into Check score button
+
+
+
+Plan out in plain English before coding:
+
+How will you attach a click event to each option button?
+-> I will attach a click button on all button that have select class.
+
+How will you know which index was clicked?
+-> from foreach i will pass the index of each option, then i will compare the correct index and selected index
+
+What happens when the answer is correct vs wrong? (just change button color for now — green or red)
+-> the background color of the selected answer will change accordingly
+
+Should the user be able to click another option after answering? How would you prevent that?
+-> i will disable the button after one option is clicked
