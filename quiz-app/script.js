@@ -41,7 +41,9 @@ const quiz_app = [
 const question_display = document.querySelector(".question_display");
 const option_display = document.querySelector(".options");
 const nextBtn = document.querySelector(".Next");
+const restartBtn = document.querySelector(".restart");
 let current_question = 0;
+let score = 0;
 
 function loadQuestion() {
   const current = quiz_app[current_question].question;
@@ -51,20 +53,20 @@ function loadQuestion() {
   option_display.innerHTML = "";
 
   options.forEach((item, index) => {
-    let click_count = 0;
     const li = document.createElement("li");
     li.innerHTML = `<button class="select"> ${item}</button>`;
     option_display.append(li);
 
     const selectBtn = li.querySelector(".select");
-    const buttons = document.querySelectorAll(".options li button");
-    console.log(buttons);
 
     selectBtn.addEventListener("click", function () {
+      const buttons = document.querySelectorAll(".options li button");
       if (index === correct_answer) {
         selectBtn.style.backgroundColor = "green";
+        score += 1;
       } else {
         selectBtn.style.backgroundColor = "red";
+        buttons[correct_answer].style.backgroundColor = "green";
       }
 
       buttons.forEach((button) => {
@@ -77,11 +79,18 @@ loadQuestion();
 
 nextBtn.addEventListener("click", function () {
   if (current_question >= quiz_app.length - 1) {
-    nextBtn.textContent = "Submit";
-    question_display.textContent = "The end";
+    this.remove();
+    question_display.textContent = `Your score: ${score}`;
     option_display.innerHTML = "";
     return;
   }
   current_question = current_question + 1;
+  loadQuestion();
+});
+
+restartBtn.addEventListener("click", function () {
+  current_question = 0;
+  score = 0;
+
   loadQuestion();
 });
