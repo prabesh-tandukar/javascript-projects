@@ -1,0 +1,22 @@
+Tip calculator - what it needs to do
+- User enters a bill amount
+- user selects a tip percentage (10%, 15%, 20%, 25%)
+- user enters number of people splitting the bill
+- app calculates and displays:
+    - tip amount per person
+    - total per person
+
+Before any code - questions to answer
+
+1. The math:
+If the bill is $120, tip is 15%, and 3 people are splitting it:
+
+What is the tip amount in dollars?
+First 15% of 120 is 15 divided by 100 which is 0.15 then we multiply 0.15 by 120 which is 18 $. total with the 18$ added would be 138
+
+What does each person pay in total?
+138 divided by 3 is 46$. Each person pays 46$.
+
+2. The inputs:
+What data type does input.value give you in JavaScript when a user types a number?
+-> The user input is in string always if we need to calculate the user inputs with number we will need to convert the input string into number. with number() function.
