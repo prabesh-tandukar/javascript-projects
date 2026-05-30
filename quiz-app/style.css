@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #4f6ef7;
+  --correct: #22a06b;
+  --wrong: #e2483d;
+  --border: #e0e0e0;
+  --bg: #f4f4f4;
+  --radius: 8px;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/*card that holds everything*/
+.container {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* question text */
+.question_display {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  min-height: 48px;
+}
+
+/*removing default list styling */
+.options {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+/* each option button */
+.select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  text-align: left;
+  background: white;
+  color: #222;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.select:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: #f0f3ff;
+}
+
+/*js sets these directly */
+.select:disabled {
+  cursor: default;
+}
+
+/* next and restart buttons */
+.Next,
+.restart {
+  padding: 11px 24px;
+  font-size: 0.95rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.Next:hover,
+.restart:hover {
+  opacity: 0.85;
+}
+
+.select.correct {
+  background: #22a06b;
+  color: white;
+  border-color: #22a06b;
+}
+.select.wrong {
+  background: #e2483d;
+  color: white;
+  border-color: #e2483d;
+}

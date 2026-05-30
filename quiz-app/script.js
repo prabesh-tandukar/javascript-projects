@@ -51,6 +51,7 @@ function loadQuestion() {
   const correct_answer = quiz_app[current_question].correct;
   question_display.textContent = current;
   option_display.innerHTML = "";
+  restartBtn.style.display = "none";
 
   options.forEach((item, index) => {
     const li = document.createElement("li");
@@ -62,11 +63,11 @@ function loadQuestion() {
     selectBtn.addEventListener("click", function () {
       const buttons = document.querySelectorAll(".options li button");
       if (index === correct_answer) {
-        selectBtn.style.backgroundColor = "green";
+        selectBtn.classList.add("correct");
         score += 1;
       } else {
-        selectBtn.style.backgroundColor = "red";
-        buttons[correct_answer].style.backgroundColor = "green";
+        selectBtn.classList.add("wrong");
+        buttons[correct_answer].classList.add("correct");
       }
 
       buttons.forEach((button) => {
@@ -79,7 +80,8 @@ loadQuestion();
 
 nextBtn.addEventListener("click", function () {
   if (current_question >= quiz_app.length - 1) {
-    this.remove();
+    this.style.display = "none";
+    restartBtn.style.display = "inline";
     question_display.textContent = `Your score: ${score}`;
     option_display.innerHTML = "";
     return;
@@ -89,6 +91,7 @@ nextBtn.addEventListener("click", function () {
 });
 
 restartBtn.addEventListener("click", function () {
+  nextBtn.style.display = "inline";
   current_question = 0;
   score = 0;
 
