@@ -1,5 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #22a06b;
+  --border: #e0e0e0;
+  --bg: #f4f4f4;
+  --radius: 8px;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Wrap all body children in a card */
+body > div,
+body > button {
+  max-width: 460px;
+  width: 100%;
+}
+
+/* Card wrapper — wraps everything visually */
+body {
+  flex-direction: column;
+  gap: 20px;
+}
+
+body > div {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 500;
+}
+
+/* Number inputs */
+input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  margin-top: 4px;
+}
+
+input[type="number"]:focus {
+  border-color: var(--accent);
+}
+
+/* Tip % buttons row */
+.tip_btn {
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  background: white;
+  color: #222;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.tip_btn:hover {
+  border-color: var(--accent);
+}
+
+/* active style — */
 .tip_btn.active {
-  background-color: #22a06b;
+  background-color: var(--accent);
   color: white;
-  border-color: #22a06b;
+  border-color: var(--accent);
+}
+
+/* Tip buttons sit in a row */
+body > div:nth-child(2) {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Calculate button */
+.calculate {
+  max-width: 460px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.calculate:hover {
+  opacity: 0.85;
+}
+
+/* Result divs — only show when they have content */
+.total_with_tips,
+.tip_per_person,
+.total_per_person {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.total_with_tips:empty,
+.tip_per_person:empty,
+.total_per_person:empty {
+  display: none;
 }

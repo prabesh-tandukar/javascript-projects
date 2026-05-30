@@ -13,15 +13,16 @@
     </div>
     <div>
       Choose the tip % :
-      <button id="ten_percent" class="tip_btn">10%</button>
-      <button id="fifteen_percent" class="tip_btn">15%</button>
-      <button id="twenty_percent" class="tip_btn">20%</button>
-      <button id="twenty_five_percent" class="tip_btn">25%</button>
+      <button class="tip_btn" data-tip="10">10%</button>
+      <button class="tip_btn" data-tip="15">15%</button>
+      <button class="tip_btn" data-tip="20">20%</button>
+      <button class="tip_btn" data-tip="25">25%</button>
     </div>
     <div>
       Enter the no of people: <input type="number" name="people" id="people" />
     </div>
     <button class="calculate">Calculate</button>
+    <div class="total_with_tips"></div>
     <div class="tip_per_person"></div>
     <div class="total_per_person"></div>
   </body>
