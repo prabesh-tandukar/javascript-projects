@@ -45,7 +45,6 @@ body {
 
 /*removing default list styling */
 .options {
-  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
