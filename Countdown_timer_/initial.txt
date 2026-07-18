@@ -1,0 +1,17 @@
+Project 4: Countdown Timer
+
+four questions before writing code:
+
+1. If a user enters 2 minutes, how many total seconds is that? What's the formula?
+-> if user enter 2 mintues is 2 * 60 cause one minute is 60 secons so its 120 seconds.
+
+2. Every second, what needs to happen to your remaining time?
+-> every second the remaining time should be deducted by 1.
+
+3. How will you know when to stop the timer and call clearInterval?
+-> when the time left is equal to 0 then we know to stop the timer and call clearInterval.
+
+
+4. If you have 95 seconds left, how do you split that into minutes and seconds for display? (Google: "javascript modulo operator" and "javascript Math.floor")
+-> if i have 95 i split it into minutes using javascript modulo operator 95 % 60 it gives 35 so it will be 1 minute and 35 seconds
+

@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #4f6ef7;
+  --border: #e0e0e0;
+  --bg: #f4f4f4;
+  --radius: 8px;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Input row */
+.input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.input input {
+  width: 100px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  text-align: center;
+}
+
+.input input:focus {
+  border-color: var(--accent);
+}
+
+/* Timer display — the centrepiece of the page */
+.display {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #1a1a1a;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 48px;
+  min-width: 280px;
+  text-align: center;
+}
+
+/* Buttons row */
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.start_btn,
+.reset_btn {
+  padding: 11px 28px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.start_btn {
+  background: var(--accent);
+  color: white;
+}
+
+.reset_btn {
+  background: white;
+  color: #444;
+  border: 1px solid var(--border);
+}
+
+.start_btn:hover,
+.reset_btn:hover {
+  opacity: 0.8;
+}
