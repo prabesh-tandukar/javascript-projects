@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #4f6ef7;
+  --border: #e0e0e0;
+  --bg: #eef0f8;
+  --card: #ffffff;
+  --radius: 12px;
+  --text: #1a1a1a;
+  --muted: #888;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Label */
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Search row — input and button as a pair */
+input#city {
+  padding: 12px 16px;
+  font-size: 1rem;
+  width: 280px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius) 0 0 var(--radius);
+  outline: none;
+  background: var(--card);
+}
+
+input#city:focus {
+  border-color: var(--accent);
+}
+
+.search {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.search:hover {
+  opacity: 0.85;
+}
+
+/* Weather result card */
+.display {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Hide the card when empty */
+.display:empty {
+  display: none;
+}
+
+/* City name — stands out as the header of the card */
+.display .city {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Temperature — the most important number, make it big */
+.display .tempt {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* The rest of the stats in a consistent style */
+.display .humidity,
+.display .weather,
+.display .wind {
+  font-size: 0.95rem;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.display .wind {
+  border-bottom: none;
+}
+
+/* Error message */
+.error_msg {
+  font-size: 0.9rem;
+  color: #e2483d;
+  font-weight: 500;
+  min-height: 20px;
+}
