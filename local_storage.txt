@@ -1,0 +1,25 @@
+local storage object provides a way to store data in the browser that stays even after the window is closed.
+It uses two methods setItem() to store data and getItem() to retrieve the data.
+
+setItem(key, value) methods adds a key-value pair to the storage an both arguments must be strings.
+so objects and strings must be serialized using JSON.stringify() before storage.
+
+//storing a simple string 
+localStorage.setItem('theme', 'dark');
+
+//storing an object (requires JSON.stringify)
+const user = {name: 'Alice', logedIn: true};
+localStorage.setItem('user', JSON.stringify(user));
+
+getItem(key) method retrievs the value assosiated with a specific key. it key doesnt exist it returns null. 
+for data stored in json string we must use JSON.parse() to convert it back into an object or array.
+
+//retrieving a string
+const theme = localStorage.getItem('theme'); //returns 'dark'
+
+//retrieving and parsing an object
+const storedUser = localStorage.getItem('user');
+if (storedUser) {
+    const user = JSON.parse(storedUser); // convers string back to object
+    console.log(user.name); //returns alice
+}

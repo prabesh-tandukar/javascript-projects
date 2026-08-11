@@ -1,0 +1,51 @@
+1. How would you represent one single workout entry as a JavaScript Object?
+-> one entry for the day would be an array inside which there would be object,
+the name of the array will be the date of the day, then there will objects of each exercise done that day,
+name of the object will be the exe name then
+squat = { first_set {reps: 10, weight: 20kg, rpe: 8}
+second_set {reps:8, weight: 20kg, rpe: 9}}
+
+8_8_2026 = {
+    exercise_name(squat) = {{set_num:1, reps_num: 4, weight: 60},
+    {set_num:2, reps_num: 4, weight: 60}} ,
+       exercise_name(bench press) = {{set_num:1, reps_num: 4, weight: 60},
+    {set_num:2, reps_num: 4, weight: 60}} ,
+}
+
+2. How would you store multiple entries — what wraps around the individual objects?
+-> I would store multiple entries in an array.
+
+3. When the page loads, what's the first thing your app should do regarding localStorage?
+-> When the page loads the first thing i would consider regarding local storage is that it should access the prevous days data and display it.
+
+4. When a user adds a new entry, what are the steps in order?
+
+Read from localStorage (3)
+Add new entry (1)
+Save back to localStorage (2)
+Update the display(4)
+
+let workout = [
+    {
+        date : new Date().toLocaleDateString(),
+        exercise_name : "squat",
+        sets: 3,
+        reps: 10,
+        weight: 85,
+    },
+    {
+        date : new Date().toLocaleDateString(),
+        exercise_name : "squat",
+        sets: 3,
+        reps: 10,
+        weight: 85,
+    },
+    {
+        date : new Date().toLocaleDateString(),
+        exercise_name : "squat",
+        sets: 3,
+        reps: 10,
+        weight: 85,
+    },
+
+]
