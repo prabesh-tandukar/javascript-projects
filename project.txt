@@ -1,0 +1,24 @@
+Based on the "God of Notes" project (5:28 - 6:09) described in the video, here is a Software Requirements Specification (SRS) outline to guide your development:
+
+### **1. Product Overview**
+*   **Goal:** Create a lightweight, offline-first, private, and cross-device note-taking application.
+*   **Target Audience:** Power users frustrated by bloated, cloud-dependent, or expensive subscription-based note apps.
+
+### **2. Functional Requirements**
+*   **Local-First Storage:** All data must be stored locally on the user's device, ensuring the app is fully functional without an internet connection.
+*   **Git-like Synchronization:** Implement a version control system (like *Git*) for note synchronization across devices, allowing for conflict resolution and change tracking.
+*   **Advanced Formatting:** Support rich text formatting (similar to *Notion*) while maintaining a high-performance, lightweight codebase.
+*   **Multi-Device Sync:** Enable seamless syncing between desktop and mobile/web clients using a decentralized or self-hosted synchronization backend.
+
+### **3. Non-Functional Requirements**
+*   **Performance:** The app must be highly responsive with minimal memory footprint compared to Electron-based alternatives.
+*   **Security & Privacy:** End-to-end encryption for any data synced to a cloud service; user-owned data.
+*   **Offline Capability:** Full CRUD (Create, Read, Update, Delete) operations must be available offline.
+
+### **4. Technical Stack Recommendations**
+*   **Frontend:** *Rust* (with *Tauri* for native cross-platform capability) or a highly optimized web framework.
+*   **Backend/Sync:** *SQLite* for local storage and a custom synchronization engine or integration with *Git* internals.
+
+### **5. Success Metrics**
+*   **User Adoption:** Ability to build a user base that finds the tool genuinely useful for daily workflows.
+*   **Resume Impact:** Demonstrating complex systems knowledge (distributed state management, data structures) to recruiters.
