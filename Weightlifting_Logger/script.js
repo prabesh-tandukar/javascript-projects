@@ -10,17 +10,41 @@ function displayEntries() {
   console.log(data);
   let html = "";
 
-  for (const item of data) {
-    html += `<tr> <td> ${item.date} </td> <td> ${item.exercise_name} </td> <td> ${item.sets} </td> <td> ${item.reps} </td> <td> ${item.weight} </td> <td><button>Delete</button></td></tr>`;
-  }
+  data.forEach((item, index) => {
+    html += `<tr> 
+    <td> ${item.date} </td> 
+    <td> ${item.exercise_name} </td> 
+    <td> ${item.sets} </td> 
+    <td> ${item.reps} </td> 
+    <td> ${item.weight} </td> 
+    <td><button class="delete_btn" data_index="${index}">Delete</button></td>
+    </tr>`;
+  });
   display.innerHTML = html;
+
+  const delete_buttons = display.querySelectorAll(".delete_btn");
+  delete_buttons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const index = Number(this.dataset.index);
+      const entries = localStorage.getItem("workouts");
+      const array = JSON.parse(entries);
+      array.splice(index, 1);
+      localStorage.setItem("workouts", JSON.stringify(array));
+      displayEntries();
+    });
+  });
 }
 
 function addEntry() {
-  let exercise_name = document.getElementById("exercise_name").value;
-  let sets = document.getElementById("sets").value;
-  let reps = document.getElementById("reps").value;
-  let weight = document.getElementById("weight").value;
+  const exe_name_input = document.getElementById("exercise_name");
+  const sets_input = document.getElementById("sets");
+  const reps_input = document.getElementById("reps");
+  const weight_input = document.getElementById("weight");
+
+  let exercise_name = exe_name_input.value;
+  let sets = sets_input.value;
+  let reps = reps_input.value;
+  let weight = weight_input.value;
   if (!exercise_name || !sets || !reps || !weight) {
     return;
   }
@@ -43,7 +67,10 @@ function addEntry() {
 
   displayEntries();
 
-  exercise_name = "";
+  exe_name_input.value = "";
+  sets_input.value = "";
+  reps_input.value = "";
+  weight_input.value = "";
 }
 
 entry_btn.addEventListener("click", addEntry);
