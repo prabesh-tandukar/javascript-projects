@@ -3,12 +3,13 @@ let display = document.querySelector(".display");
 
 function displayEntries() {
   let data = localStorage.getItem("workouts");
-  if (!data) {
-    return;
-  }
-  data = JSON.parse(data);
-  console.log(data);
   let html = "";
+
+  data = data ? JSON.parse(data) : [];
+
+  if (data.length === 0) {
+    html += `<tr><td></td><td>No entries to display</td></tr>`;
+  }
 
   data.forEach((item, index) => {
     html += `<tr> 
@@ -17,7 +18,7 @@ function displayEntries() {
     <td> ${item.sets} </td> 
     <td> ${item.reps} </td> 
     <td> ${item.weight} </td> 
-    <td><button class="delete_btn" data_index="${index}">Delete</button></td>
+    <td><button class="delete_btn" data-index="${index}">Delete</button></td>
     </tr>`;
   });
   display.innerHTML = html;
@@ -26,6 +27,7 @@ function displayEntries() {
   delete_buttons.forEach((btn) => {
     btn.addEventListener("click", function () {
       const index = Number(this.dataset.index);
+
       const entries = localStorage.getItem("workouts");
       const array = JSON.parse(entries);
       array.splice(index, 1);
@@ -62,8 +64,6 @@ function addEntry() {
   array.push(workout);
 
   localStorage.setItem("workouts", JSON.stringify(array));
-
-  console.log(array);
 
   displayEntries();
 
