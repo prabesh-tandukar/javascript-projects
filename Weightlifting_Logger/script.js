@@ -8,7 +8,7 @@ function displayEntries() {
   data = data ? JSON.parse(data) : [];
 
   if (data.length === 0) {
-    html += `<tr><td></td><td>No entries to display</td></tr>`;
+    html += `<tr><td colspan="6" style="text-align:center">No entries to display</td></tr>`;
   }
 
   data.forEach((item, index) => {

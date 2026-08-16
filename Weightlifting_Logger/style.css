@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap");
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface-2: #222222;
+  --border: #2e2e2e;
+  --accent: #c8f04d; /* sharp lime — energy, gym */
+  --accent-dim: #9db83a;
+  --text: #f0f0f0;
+  --muted: #777;
+  --danger: #ff4d4d;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 16px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 80px;
+  gap: 32px;
+}
+
+/* ============================================================
+   PAGE HEADING
+   ============================================================ */
+body::before {
+  content: "LIFT LOG";
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4.5rem;
+  letter-spacing: 6px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ============================================================
+   FORM CARD
+   ============================================================ */
+body > div:not(.display-wrapper) {
+  /* each bare div becomes a field row inside a card */
+}
+
+/* Wrap the four input divs + button in a card via adjacent grouping */
+body > div {
+  width: 100%;
+  max-width: 540px;
+}
+
+/* The card itself — target all four input divs as a group */
+body > div:nth-child(2),
+body > div:nth-child(3),
+body > div:nth-child(4),
+body > div:nth-child(5) {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  max-width: 540px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+body > div:nth-child(2) {
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: none;
+}
+body > div:nth-child(3) {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+}
+body > div:nth-child(4) {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+}
+body > div:nth-child(5) {
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Labels */
+label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"] {
+  flex: 1;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--accent);
+}
+
+input::placeholder {
+  color: #444;
+}
+
+/* Remove number input arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ============================================================
+   ADD ENTRY BUTTON
+   ============================================================ */
+.entry {
+  width: 100%;
+  max-width: 540px;
+  padding: 14px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  background: var(--accent);
+  color: #0f0f0f;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.entry:hover {
+  background: var(--accent-dim);
+}
+
+.entry:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+table {
+  width: 100%;
+  max-width: 720px;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden; /* clips the border-radius on child cells */
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+thead th {
+  padding: 14px 18px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--surface-2);
+}
+
+tbody td {
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* Date cell — muted, smaller */
+tbody td:first-child {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* Exercise name — slightly bolder */
+tbody td:nth-child(2) {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ============================================================
+   DELETE BUTTON
+   ============================================================ */
+.delete_btn {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-family: "Inter", sans-serif;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.delete_btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+tbody td[colspan] {
+  color: var(--muted);
+  font-size: 0.88rem;
+  padding: 32px 18px;
+}
