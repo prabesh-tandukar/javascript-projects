@@ -22,14 +22,13 @@ function App() {
 
     setEntries([...entries, workout]);
 
-    console.log(entries);
-
     setExerciseName("");
     setSets("");
     setReps("");
     setWeight("");
   }
 
+  console.log(entries);
   return (
     <div>
       <h1>Weightlifting logger</h1>
@@ -73,6 +72,14 @@ function App() {
       <button className="entry" onClick={addEntry}>
         Add Entry
       </button>
+      <ul>
+        {entries.map((entry, index) => (
+          <li key={index}>
+            {entry.date} - {entry.exerciseName} - {entry.sets} sets -
+            {entry.reps} reps - {entry.weight}kg
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
