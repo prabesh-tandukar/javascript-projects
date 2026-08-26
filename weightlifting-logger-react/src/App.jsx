@@ -5,7 +5,30 @@ function App() {
   const [sets, setSets] = useState("");
   const [reps, setReps] = useState("");
   const [weight, setWeight] = useState("");
-  const [entries, setEntries] = useState("");
+  const [entries, setEntries] = useState([]);
+
+  function addEntry() {
+    if (!exerciseName || !sets || !reps || !weight) {
+      return;
+    }
+
+    let workout = {
+      date: new Date().toLocaleDateString(),
+      exerciseName: exerciseName,
+      sets: Number(sets),
+      reps: Number(reps),
+      weight: Number(weight),
+    };
+
+    setEntries([...entries, workout]);
+
+    console.log(entries);
+
+    setExerciseName("");
+    setSets("");
+    setReps("");
+    setWeight("");
+  }
 
   return (
     <div>
@@ -47,10 +70,7 @@ function App() {
         />
       </div>
 
-      <button
-        className="entry"
-        onClick={() => console.log(exerciseName, sets, reps, weight)}
-      >
+      <button className="entry" onClick={addEntry}>
         Add Entry
       </button>
     </div>
