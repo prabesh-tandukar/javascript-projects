@@ -1,45 +1,31 @@
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 function App() {
   const [goal, setGoal] = useState("");
   const [time, setTime] = useState("");
   const [equipment, setEquipment] = useState("");
   const [experience, setExperience] = useState("beginner");
+  const [workoutPlan, setWorkoutPlan] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function generateWorkout() {
     if (!goal || !time || !equipment || !experience) {
       return;
     }
 
-    const prompt = `You are a professional fitness coach. Create a detailed workout plan for someone with the following details:
-
-    - Goal: ${goal}
-    - Time Available: ${time} minutes
-    - Equipment: ${equipment}
-    - Experience Level: ${experience}
-
-    Please provide:
-    1. A brief intro explaining the workout approach
-    2. A structured list of exercises with sets, reps, and rest periods
-    3. Any important form tips or safety notes
-
-    Keep the plan realistic and achievable for the given experience level and time constraint.`;
-
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 1000,
-        messages: [{ role: "user", content: { prompt } }],
-      }),
-    });
-
-    const data = await response.json();
-
-    console.log(data.content[0].text);
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:3001/generate-workout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ goal, time, equipment, experience }),
+      });
+      const data = await response.json();
+      setIsLoading(false);
+      setWorkoutPlan(data.workoutPlan);
+      console.log(data.workoutPlan);
+    } catch (error) {}
   }
   return (
     <div>
@@ -81,8 +67,16 @@ function App() {
         </select>
       </div>
       <div>
-        <button onClick={generateWorkout}>Generate Workout</button>
+        <button onClick={generateWorkout} disabled={isLoading}>
+          {isLoading ? "Generating..." : "Generate Workout"}
+        </button>
       </div>
+      {workoutPlan && (
+        <div className="workout-plan">
+          <h2>Your Workout Plan</h2>
+          <ReactMarkdown>{workoutPlan}</ReactMarkdown>
+        </div>
+      )}
     </div>
   );
 }
