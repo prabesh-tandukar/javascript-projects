@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const GEMINI_API_KEY = "AQ.Ab8RN6JW24cd7S7gEgA0Hivb7l35ouBhItTQxMia8MjM74nTFg";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 app.post("/generate-workout", async (req, res) => {
   const { goal, time, equipment, experience } = req.body;

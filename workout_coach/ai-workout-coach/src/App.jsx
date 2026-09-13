@@ -8,24 +8,29 @@ function App() {
   const [experience, setExperience] = useState("beginner");
   const [workoutPlan, setWorkoutPlan] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function generateWorkout() {
     if (!goal || !time || !equipment || !experience) {
       return;
     }
-
     setIsLoading(true);
+    setError("");
     try {
       const response = await fetch("http://localhost:3001/generate-workout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ goal, time, equipment, experience }),
       });
+
       const data = await response.json();
-      setIsLoading(false);
+
       setWorkoutPlan(data.workoutPlan);
-      console.log(data.workoutPlan);
-    } catch (error) {}
+    } catch {
+      setError("Something went wrong, try again.");
+    } finally {
+      setIsLoading(false);
+    }
   }
   return (
     <div>
@@ -77,6 +82,7 @@ function App() {
           <ReactMarkdown>{workoutPlan}</ReactMarkdown>
         </div>
       )}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }
