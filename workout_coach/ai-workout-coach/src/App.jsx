@@ -79,7 +79,9 @@ function App() {
       {workoutPlan && (
         <div className="workout-plan">
           <h2>Your Workout Plan</h2>
-          <ReactMarkdown>{workoutPlan}</ReactMarkdown>
+          <div className="markdown">
+            <ReactMarkdown>{workoutPlan}</ReactMarkdown>
+          </div>
         </div>
       )}
       {error && <p className="error">{error}</p>}
