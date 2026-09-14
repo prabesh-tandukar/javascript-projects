@@ -10,13 +10,15 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 // console.log("api key:", GEMINI_API_KEY);
 
 app.post("/generate-workout", async (req, res) => {
-  const { goal, time, equipment, experience } = req.body;
+  const { goal, time, equipment, experience, daysPerWeek, injuries } = req.body;
 
   const prompt = `You are a professional fitness coach. Create a detailed workout plan for someone with the following details:
         - Goal: ${goal}
         - Time Available: ${time} minutes
         - Equipment: ${equipment}
         - Experience Level: ${experience}
+        - Days per week: ${daysPerWeek}
+        - Injuries or limitations: ${injuries}
 
         Please provide:
         1. A brief intro explaining the workout approach
